@@ -32,8 +32,6 @@ let foodArray = [
 
 mainTitle.textContent = foodArray[0];
 
-
-
 feedingButton.addEventListener('click', () => {
     GenerateFood();
     IncrementCount();
