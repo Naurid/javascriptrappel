@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="zoo.js" defer></script>
+    <title>Title</title>
+</head>
+<body>
+<div class="zoo">
+  <h1>PairPasDaiza</h1>
+  <div id="enclos-1">
+    <h2>Lion 🦁</h2>
+    <div class="animaux-container"></div>
+  </div>
+  <div id="enclos-2">
+    <h2>Giraffe 🦒</h2>
+    <div class="animaux-container"></div>
+    <div class="buttons-container"></div>
+  </div>
+</div>
+</body>
+</html>
+
+<style>
+  body{
+    width: 100vw;
+    height:100vh;
+    margin: 0;
+    padding:0;
+  }
+  .animaux-container{
+    display: flex;
+    overflow: hidden;
+    gap: 1rem;
+    padding: 1rem 1rem;
+    width: 100vw;
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  .buttons-container{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  #enclos-1 h2,
+  #enclos-2 h2{
+    text-align: center;
+  }
+</style>
