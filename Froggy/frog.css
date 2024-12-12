@@ -1,0 +1,56 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+#GameContainer{
+    margin-top: 3rem;
+    width : 800px;
+    height : 800px;
+    gap: 2px;
+    display : flex;
+    flex-wrap: wrap;
+    align-self: center;
+    justify-self: center;
+}
+
+#PointsDisplay{
+    font-size: 1.8rem;
+    font-family: "JetBrains Mono ExtraBold", sans-serif;
+    color: white;
+    justify-self: center;
+}
+
+#winVideo{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    color: white;
+}
+
+#winVideo p{
+    text-align: center;
+    font-size: 2rem;
+}
+
+.cell{
+    width : 78px;
+    height : 78px;
+    font-size: 40px;
+    background: rgba(82, 141, 250, 0.51);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+body{
+    width: 100%;
+    background-image: url("grasstexture.jpg");
+}
