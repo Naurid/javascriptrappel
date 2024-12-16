@@ -12,6 +12,7 @@ const winCon = 50;
 let doPoo = false;
 
 let grid = []
+
 let currentPosition =
     {
         x : 0,
@@ -43,7 +44,6 @@ function DrawGrid()
             container.appendChild(newButton);
         }
     }
-
     pointsDisplay.textContent = `Score : ${points}`;
 }
 
@@ -56,7 +56,7 @@ function SpawnMosquito(){
         randomX = Math.floor(Math.random() * (gridX - 1));
         randomY = Math.floor(Math.random() * (gridY - 1));
 
-        isEmpty =  grid[randomX][randomY] !== "🦟" || grid[randomX][randomY] !== "🐸";
+        isEmpty =  grid[randomX][randomY] !== "🦟" || grid[randomX][randomY] !== "🐸" || grid[randomX][randomY] !== "💩";
     }
 
     grid[randomX][randomY] = "🦟";
@@ -64,7 +64,6 @@ function SpawnMosquito(){
 
 function CheckForMosquito(){
     if (grid[currentPosition.x][currentPosition.y] === "🦟"){
-        grid[currentPosition.x][currentPosition.y] = "";
         pooPosition.x = currentPosition.x;
         pooPosition.y = currentPosition.y;
         points += 5;
@@ -98,6 +97,7 @@ function MoveLeft()
 
 document.addEventListener("keydown", (event) => {
     if(!doPoo) {grid[currentPosition.x][currentPosition.y] = "";}
+    Poo();
     switch (event.key){
         case "ArrowUp":
             MoveUp();
@@ -113,7 +113,6 @@ document.addEventListener("keydown", (event) => {
             break;
     }
     CheckForMosquito();
-    Poo();
     CheckForWin();
     DrawGrid();
 });
@@ -124,4 +123,8 @@ for(let i = 0; i < 7; i++){
 
 
 DrawGrid();
+
+function StartNewGame() {
+
+}
 
