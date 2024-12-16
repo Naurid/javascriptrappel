@@ -34,8 +34,8 @@ export function EnterShrekMode(model){
    document.getElementsByClassName("shrekCursed")[0].style.display = "block";
 }
 
-export function CalculateConsumption(){
-
+export function CalculateConsumption(currentCar, kilometreInput){
+    return ((currentCar.tankSize - (currentCar.consumption / 100 * kilometreInput.value)) / currentCar.consumption * 100).toString();
 }
 
 export function CreateInput(container, label, type){

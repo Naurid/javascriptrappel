@@ -48,7 +48,7 @@ kilometreButton.classList.add("button");
 kilometreButton.innerText = "Calculate remaining distance";
 kilometreButton.onclick = () => {
    if(currentCar === null) return;
-    kmLeft.textContent = ((currentCar.tankSize - (currentCar.consumption / 100 * kilometreInput.value)) / currentCar.consumption * 100).toString();
+    kmLeft.textContent = utils.CalculateConsumption(currentCar, kilometreInput);
 }
 calculator.appendChild(kilometreButton);
 
