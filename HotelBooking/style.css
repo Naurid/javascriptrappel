@@ -1,0 +1,107 @@
+/* Style général */
+body {
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(135deg, #f3d1c1, #fcc6ba);
+    color: #3a1d1d;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3em;
+    margin-top: 30px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Formulaire */
+form {
+    max-width: 500px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    padding: 30px;
+    position: relative;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Style des champs */
+label {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+    display: block;
+    font-weight: bold;
+}
+
+input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    font-size: 1em;
+    border: 2px solid #872d3c;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border-color: #e5989b;
+    box-shadow: 0 0 10px rgba(231, 152, 155, 0.7);
+}
+
+button {
+    background-color: #872d3c;
+    color: #ffffff;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #a14657;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Style des messages */
+.success, .error {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 50%;
+    justify-content: center;
+    justify-self: center;
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+.success {
+    color: #216869;
+}
+
+.error {
+    color: #b71c1c;
+}
+
+/* Style pour le GIF d'erreur */
+body div.gif-container img {
+    max-width: 100%;
+    height: auto;
+    z-index: 9999;
+}
+
+/* Style supplémentaire */
+/*body::before {*/
+/*    content: \"\";\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    height: 300px;\n    background: linear-gradient(135deg, #872d3c, #f3d1c1);\n    z-index: -1;\n}*/
+
+/*form::after {\n    content: \"\";\n    position: absolute;\n    top: -10px;\n    right: -10px;\n    bottom: -10px;\n    left: -10px;\n    border: 5px dashed #e5989b;\n    border-radius: 20px;\n    z-index: -1;\n}*/
