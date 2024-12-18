@@ -1,0 +1,98 @@
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Funnel Sans", serif;
+}
+
+nav{
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 5rem;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.navButton{
+    border: none;
+    background-color: inherit;
+    color: #ca4d4d;
+    font-size: 2vw;
+    font-family: "Barriecito", serif;
+}
+
+#displayer{
+    margin-top: 6rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.joke-card{
+    display: flex;
+    height : 20vh;
+    width: 20vw;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2rem;
+    /* From https://css.glass */
+    background: rgba(63, 63, 63, 0.89);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgb(63, 63, 63);
+    transition: transform .2s ease-in-out;
+}
+
+.joke-card:hover{
+    transform: scale(1.05);
+}
+
+.joke-setup,
+.joke-delivery{
+    color: white;
+    font-size: 1vw;
+}
+
+.refresh-button{
+    position: fixed;
+    bottom: 10rem;
+    width: 40%;
+    height: 5rem;
+    color: white;
+    font-size: 2vw;
+    /* From https://css.glass */
+    background: rgba(97, 97, 97, 0.7);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgb(63, 63, 63);
+    transition: all .2s ease-in-out;
+}
+
+.refresh-button:hover{
+    transform: scale(1.05);
+    box-shadow: 0 4px 30px rgb(255, 255, 255);
+}
+
+#wrongAnswer{
+    position: fixed;
+    color: red;
+    font-weight: bold;
+    font-size: 2vw;
+    bottom: -3rem;
+    left: 25%;
+    transition: all .2s ease-in-out;
+}
