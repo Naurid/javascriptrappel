@@ -1,10 +1,31 @@
-const mainDisplay = document.getElementById('displayer');
+
+let mainDisplay;
+let jokesDisplay;
 
 const wallPapers = [
     {id : 1, url : 'url("./pictures/disappointedtrollface.png")'},
     {id : 2, url : 'url("./pictures/mexicanoTroll.png")'},
     {id : 3, url : 'url("./pictures/trollFaceNormal.png")'},
 ]
+
+export function SetupJokes(){
+    let randomBG = Math.floor(Math.random() * 3);
+    mainDisplay = document.getElementById("mainDisplay");
+    mainDisplay.style.backgroundImage = wallPapers[randomBG].url;
+    mainDisplay.style.backgroundRepeat = "no-repeat";
+    mainDisplay.style.backgroundPosition = "center";
+    document.body.style.backgroundColor = "darkgrey";
+    jokesDisplay = document.createElement("div");
+    jokesDisplay.classList.add("jokesMain");
+    jokesDisplay.style.display = "flex";
+    jokesDisplay.style.flexWrap = "wrap";
+    jokesDisplay.style.justifyContent = "center";
+    jokesDisplay.style.alignItems = "center";
+    jokesDisplay.style.gap = "1rem";
+    jokesDisplay.style.height = "75vh";
+    mainDisplay.innerHTML = '';
+    getJokesData();
+}
  async function getJokesData(){
     try{
         mainDisplay.innerHTML = '';
@@ -27,24 +48,17 @@ const wallPapers = [
             })
 
             displayDiv.append(setup, delivery);
-            mainDisplay.appendChild(displayDiv);
+            jokesDisplay.appendChild(displayDiv);
         })
+
         let refreshButton = document.createElement('button');
         refreshButton.className = 'refresh-button';
         refreshButton.textContent = 'Refresh Jokes';
-        refreshButton.addEventListener('click', getJokesData);
-        mainDisplay.appendChild(refreshButton);
+        refreshButton.addEventListener('click', SetupJokes);
+        mainDisplay.append(jokesDisplay, refreshButton);
     }
     catch(err){
         console.log(err);
     }
 }
 
-export function SetupJokes(){
-    let randomBG = Math.floor(Math.random() * 3);
-    document.body.style.backgroundImage = wallPapers[randomBG].url;
-    document.body.style.backgroundColor = "grey";
-    getJokesData();
-
-
-}

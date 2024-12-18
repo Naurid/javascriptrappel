@@ -14,25 +14,33 @@ nav{
     top: 0;
     width: 100vw;
     height: 5rem;
-    background-color: #fff;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.42);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .navButton{
     border: none;
-    background-color: inherit;
-    color: #ca4d4d;
+    background-color: transparent;
+    color: #fff;
     font-size: 2vw;
     font-family: "Barriecito", serif;
 }
 
-#displayer{
-    margin-top: 6rem;
+#mainDisplay{
+    height: 100vh;
+    width: 100%;
+    margin-top: 5rem;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     gap: 1rem;
 }
@@ -61,13 +69,14 @@ nav{
 
 .joke-setup,
 .joke-delivery{
+    user-select: none;
     color: white;
     font-size: 1vw;
 }
 
 .refresh-button{
     position: fixed;
-    bottom: 10rem;
+    bottom: 5rem;
     width: 40%;
     height: 5rem;
     color: white;
@@ -86,13 +95,183 @@ nav{
     transform: scale(1.05);
     box-shadow: 0 4px 30px rgb(255, 255, 255);
 }
-
+.triviaMain{
+    width: 100%;
+    height: 100%;
+    justify-content: start;
+}
 #wrongAnswer{
     position: fixed;
     color: red;
     font-weight: bold;
     font-size: 2vw;
-    bottom: -3rem;
+    bottom: -5rem;
     left: 25%;
     transition: all .2s ease-in-out;
+}
+
+.question{
+    width: 100%;
+    height: 20rem;
+    font-size: 3vw;
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.answers{
+    width: 100%;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem;
+}
+
+.answer{
+    height: 80%;
+    width: 60%;
+    font-size: 2vw;
+    /* From https://css.glass */
+    background: rgba(255, 197, 197, 0.42);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 197, 197, 0.3);
+}
+
+/*shrek-loader*/
+.shrek-loader{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    display: none;
+}
+.shrek-loader.active{
+    display: block;
+}
+
+.shrek-loader img{
+    animation: shrek-loader 1s linear infinite;
+}
+.shrek-loader h1 {
+    position: absolute;
+    bottom: 7px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 10;
+    color: white;
+    font-size: 60px;
+}
+
+@keyframes shrek-loader {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+
+}
+
+.homeMain{
+    background-color: #4a4a4a;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 2rem;
+}
+
+.scrolling-band {
+    position: relative;
+    width: 100vw;           /* Full width of the viewport */
+    height: 200px;          /* Adjust the height of the scrolling band */
+    overflow: hidden;       /* Hide content outside the bounds */
+    display: flex;      /* Prevent line breaks inside the content */
+}
+
+.content {
+    display: flex;
+    gap: 1rem;/* Allows the content to be inline for smooth scrolling */
+    animation: scroll 2000s linear infinite; /* Animation to move content horizontally */
+}
+.content p {
+    width: 25rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: medium;
+    padding: 1rem;
+    background: rgba(255, 165, 59, 0.66);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 191, 111, 0.3);
+}
+
+.scrolling-band2 {
+    position: relative;
+    width: 100vw;           /* Full width of the viewport */
+    height: 200px;          /* Adjust the height of the scrolling band */
+    overflow: hidden;       /* Hide content outside the bounds */
+    display: flex;      /* Prevent line breaks inside the content */
+}
+
+.content2 {
+    display: flex;
+    gap: 1rem;/* Allows the content to be inline for smooth scrolling */
+    animation: scroll2 2000s linear infinite;/* Animation to move content horizontally */
+}
+.content2 p {
+    width: 25rem;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1vw;
+    padding: 1rem;
+    background: rgba(255, 165, 59, 0.66);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 191, 111, 0.3);
+}
+
+.cats{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cat{
+    width: auto;
+    height: 500px;
+    border-radius: 16px;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0); /* Start from outside the right */
+    }
+    100% {
+        transform: translateX(-100%); /* End at outside the left */
+    }
+}
+
+@keyframes scroll2 {
+    0% {
+        transform: translateX(-93.5%); /* Start from outside the right */
+    }
+    100% {
+        transform: translateX(0); /* End at outside the left */
+    }
 }

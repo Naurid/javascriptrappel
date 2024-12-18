@@ -1,5 +1,20 @@
-const mainDisplay = document.getElementById('displayer');
-const wrongAnswerDisplay = document.getElementById('wrongAnswer');
+let mainDisplay ;
+let triviaDisplay;
+let wrongAnswerDisplay;
+export function SetupTrivia(){
+    document.body.style.backgroundColor = "white";
+    mainDisplay = document.getElementById("mainDisplay");
+    mainDisplay.style.backgroundImage = "none";
+    wrongAnswerDisplay = document.getElementById('wrongAnswer');
+    triviaDisplay = document.createElement('div');
+    triviaDisplay.classList.add("triviaMain");
+    triviaDisplay.style.display = "flex";
+    triviaDisplay.style.flexDirection = "column";
+    triviaDisplay.style.justifyContent = "start";
+    triviaDisplay.style.background = "linear-gradient(to bottom, #ffd1dc, #ffffff)";
+    mainDisplay.innerHTML = '';
+    getTriviaData();
+}
 
 function decodeHtmlEntities(text) {
     const tempElement = document.createElement("div"); // Temporary DOM element
@@ -7,17 +22,37 @@ function decodeHtmlEntities(text) {
     return tempElement.textContent || tempElement.innerText; // Return decoded text
 }
 
+function sleep(ms) {
+    const start = Date.now();
+    while (Date.now() - start < ms) {
+        // Boucle vide pour créer un délai synchrone
+    }
+}
+
 async function getTriviaData(){
     try{
-        const response = await fetch('https://opentdb.com/api.php?amount=1');
+        let response;
+        while (response === undefined || response.status === 429) {
+            document.getElementById("shrek-loader").classList.add('active')
+            if (response?.status === 429) {
+                console.log(document.getElementById("shrek-loader"))
+                sleep(1000)
+            }
+            response = await fetch('https://opentdb.com/api.php?amount=1');
+        }
+        document.getElementById("shrek-loader").classList.remove('active')
+
+        console.log(response)
         const body = await response.json();
-        console.log(body.results);
+
+        let answersContainer = document.createElement('div');
+        answersContainer.classList.add('answers');
 
         body.results.forEach((result) => {
             let questionDiv = document.createElement('p');
             questionDiv.classList.add('question');
             questionDiv.textContent = decodeHtmlEntities(result.question);
-            mainDisplay.appendChild(questionDiv);
+            triviaDisplay.appendChild(questionDiv);
 
             let answers = [result.correct_answer, ...result.incorrect_answers]
             answers.forEach((answer) => {
@@ -27,7 +62,7 @@ async function getTriviaData(){
 
                 answerDiv.addEventListener("click", () => {
                     if(answerDiv.textContent === decodeHtmlEntities(result.correct_answer)){
-                        getTriviaData();
+                        SetupTrivia();
                         return;
                     }
                     wrongAnswerDisplay.style.bottom = '1rem'
@@ -35,19 +70,16 @@ async function getTriviaData(){
                         wrongAnswerDisplay.style.bottom = '-5rem'
                         }, 2000)
                 })
-                mainDisplay.appendChild(answerDiv);
-            })
-        })
 
+                answersContainer.append(answerDiv);
+
+            })
+            triviaDisplay.appendChild(answersContainer);
+        })
+        mainDisplay.appendChild(triviaDisplay);
     }
     catch(err){
         console.log(err);
     }
 }
 
-export function SetupTrivia(){
-    mainDisplay.innerHTML = '';
-    document.body.backgroundColor = '#ffeaea';
-    document.body.backgroundImage = "none";
-    getTriviaData();
-}
